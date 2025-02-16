@@ -1,0 +1,7 @@
+{
+  "name": "agendaJa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
