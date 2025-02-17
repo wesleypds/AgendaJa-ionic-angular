@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
@@ -10,11 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'folder/:id',
-    loadChildren: () => import('src/app/components/folder/folder.module').then( m => m.FolderPageModule)
+    loadChildren: () => import('src/app/components/login/login.module').then(m => m.LoginModule)
   }
 ];
 
