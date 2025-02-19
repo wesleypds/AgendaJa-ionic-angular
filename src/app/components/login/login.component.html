@@ -10,12 +10,12 @@
       <ion-card-title>Bem-vindo ao AgendaJa!</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <form [formGroup]="cadastroForm" (ngSubmit)="login()"></form>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
         <ion-item>
           <ion-label position="floating">Usuário</ion-label>
           <ion-input type="text" formControlName="name"></ion-input>
         </ion-item>
-        <p *ngIf="cadastroForm.get('name')?.invalid && cadastroForm.get('name')?.touched" class="error">
+        <p *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched" class="error">
           O Usuário deve ter pelo menos 3 caracteres.
         </p>
 
