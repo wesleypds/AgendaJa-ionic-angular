@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('src/app/components/login/login.module').then(m => m.LoginModule)
   },
   {
+    path: 'cadastro',
+    loadChildren: () => import('src/app/components/cadastro/cadastro.module').then(m => m.CadastroModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('src/app/components/homepage/homepage.module').then(m => m.HomepageModule)
   }
