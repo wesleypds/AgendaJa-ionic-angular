@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AgendamentoService } from 'src/app/services/agendamento.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -18,7 +19,8 @@ export class HomepageComponent  implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private agendamentoService: AgendamentoService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private router: Router
   ) {
     this.agendamentoForm = this.fb.group({
       primeiroNome: ['', [Validators.required, Validators.maxLength(10)]],
@@ -99,6 +101,10 @@ export class HomepageComponent  implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  viewAgendamentos() {
+    this.router.navigate(['/agendamentos']);
   }
 
 }

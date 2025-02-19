@@ -1,3 +1,41 @@
-<p>
-  agendamentos works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Header </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="light">
+
+  <ion-list>
+    <ion-item *ngFor="let agendamento of agendamentos">
+      <ion-label>
+        <h2>{{ agendamento.primeiroNome }} {{ agendamento.segundoNome }}</h2>
+        <p>CPF: {{ agendamento.cpf }}</p>
+        <p>Data de Nascimento: {{ agendamento.dataNascimento | date:'dd/MM/yyyy' }}</p>
+        <p>Telefone: {{ agendamento.telefone }}</p>
+        <p>Email: {{ agendamento.email }}</p>
+        <p>Especialidade: {{ agendamento.especialidade }}</p>
+        <p>Médico: {{ agendamento.medico }}</p>
+        <p>Data da Consulta: {{ agendamento.dataConsulta | date:'dd/MM/yyyy HH:mm' }}</p>
+        <p>Motivo: {{ agendamento.motivo }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-item *ngIf="agendamentos.length === 0">
+    <ion-label>Nenhum agendamento encontrado.</ion-label>
+  </ion-item>
+  
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button>
+      <a style="text-decoration: none; color: inherit;" routerLink="/home">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </a>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-footer>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AgendamentoService } from 'src/app/services/agendamento.service';
 
 @Component({
   selector: 'app-agendamentos',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
   standalone: false
 })
 export class AgendamentosComponent  implements OnInit {
+  agendamentos: any[] = [];
 
-  constructor() { }
+  constructor(private agendamentoService: AgendamentoService) { }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    await this.carregarAgendamentos();
+  }
+
+  async carregarAgendamentos() {
+    this.agendamentos = await this.agendamentoService.list();
+  }
 
 }
