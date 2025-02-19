@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -15,11 +16,12 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private alertController: AlertController
   ) {
     this.loginForm = this.fb.group({
-      user: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
-      password: ['', [Validators.required, Validators.minLength(9)]],
+      user: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
@@ -27,7 +29,12 @@ export class LoginComponent implements OnInit {
 
   async login() {
     if (this.loginForm.invalid) {
-      alert('Preencha todos os campos corretamente!');
+      const alert = await this.alertController.create({
+        header: 'Erro',
+        message: 'Preencha todos os campos corretamente!',
+        buttons: ['Ok'],
+      });
+      await alert.present();
       return;
     }
 
@@ -35,12 +42,22 @@ export class LoginComponent implements OnInit {
 
     try {
       await this.authService.loginUser(user, password);
-      alert('Login com sucesso!');
+      const alert = await this.alertController.create({
+        header: 'Sucesso',
+        message: 'Login com sucesso!',
+        buttons: ['Ok'],
+      });
+      await alert.present();
       this.loginForm.reset(); // Limpa o formulário após o cadastro
       // 🔀 Redireciona para a tela de login
       this.router.navigate(['/home']);
     } catch (error: any) {
-      alert(error.message);
+      const alert = await this.alertController.create({
+        header: 'Erro',
+        message: error.message,
+        buttons: ['Ok'],
+      });
+      await alert.present();
     }
   }
 

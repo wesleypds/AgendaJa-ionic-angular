@@ -13,18 +13,15 @@
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <ion-item>
           <ion-label position="floating">Usuário</ion-label>
-          <ion-input type="text" formControlName="name"></ion-input>
+          <ion-input type="text" formControlName="user"></ion-input>
         </ion-item>
-        <p *ngIf="loginForm.get('name')?.invalid && loginForm.get('name')?.touched" class="error">
-          O Usuário deve ter pelo menos 3 caracteres.
-        </p>
 
         <ion-item>
           <ion-label position="floating">Senha</ion-label>
           <ion-input type="password" formControlName="password"></ion-input>
         </ion-item>
 
-        <ion-button expand="full" type="submit" [disabled]="loginForm.invalid">
+        <ion-button expand="full" type="submit">
           Entrar
         </ion-button>
       </form>

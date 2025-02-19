@@ -12,6 +12,10 @@ export class AuthService {
   async registerUser(firstName: string, lastName: string, user: string, email: string, password: string) {
     const users = await this.getUsers();
 
+    if (users.find(u => u.user === user)) {
+      throw new Error('Usuário já cadastrado!');
+    }
+
     if (users.find(user => user.email === email)) {
       throw new Error('E-mail já cadastrado!');
     }
