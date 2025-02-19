@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sidemenu',
-  templateUrl: './sidemenu.component.html',
-  styleUrls: ['./sidemenu.component.scss'],
+  selector: 'app-homepage',
+  templateUrl: './homepage.component.html',
+  styleUrls: ['./homepage.component.scss'],
+  standalone: false
 })
-export class SidemenuComponent  implements OnInit {
+export class HomepageComponent  implements OnInit {
 
   public appPages = [
     { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
