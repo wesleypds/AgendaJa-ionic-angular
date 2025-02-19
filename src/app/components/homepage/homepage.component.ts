@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { AgendamentoService } from 'src/app/services/agendamento.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,11 +12,26 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomepageComponent  implements OnInit {
   user$ = this.authService.getLoggedInUserObservable();
+  agendamentoForm!: FormGroup;
 
   constructor(
+    private fb: FormBuilder,
     private authService: AuthService,
+    private agendamentoService: AgendamentoService,
     private alertController: AlertController
-  ) { 
+  ) {
+    this.agendamentoForm = this.fb.group({
+      primeiroNome: ['', [Validators.required, Validators.maxLength(10)]],
+      segundoNome: ['', [Validators.required, Validators.maxLength(100)]],
+      cpf: ['', [Validators.required, Validators.pattern(/^\d{11}$/)]],
+      dataNascimento: ['', Validators.required],
+      telefone: ['', [Validators.required, Validators.pattern(/^\d{10,11}$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      especialidade: ['', Validators.required],
+      medico: [''],
+      dataConsulta: ['', Validators.required],
+      motivo: ['']
+    });
   }
 
   ngOnInit() {}
@@ -27,6 +44,57 @@ export class HomepageComponent  implements OnInit {
     });
     await alert.present();
     return;
+  }
+
+  async create() {
+    if (this.agendamentoForm.invalid) {
+      const alert = await this.alertController.create({
+        header: 'Erro',
+        message: 'Preencha todos os campos corretamente!',
+        buttons: ['Ok'],
+      });
+      await alert.present();
+      return;
+    }
+
+    const { primeiroNome, 
+            segundoNome, 
+            cpf, 
+            dataNascimento, 
+            telefone, 
+            email, 
+            especialidade, 
+            medico, 
+            dataConsulta, 
+            motivo } = this.agendamentoForm.value;
+
+    try {
+      await this.agendamentoService.create(primeiroNome,
+                                            segundoNome,
+                                            cpf,
+                                            dataConsulta,
+                                            telefone,
+                                            email,
+                                            especialidade,
+                                            medico,
+                                            dataConsulta,
+                                            motivo
+                                          );
+      const alert = await this.alertController.create({
+        header: 'Sucesso',
+        message: 'Agendamento cadastrado com sucesso!',
+        buttons: ['Ok'],
+      });
+      await alert.present();
+      this.agendamentoForm.reset(); // Limpa o formulário após o cadastro
+    } catch (error: any) {
+      const alert = await this.alertController.create({
+        header: 'Erro',
+        message: error.message,
+        buttons: ['Ok'],
+      });
+      await alert.present();
+    }
   }
 
   logout() {

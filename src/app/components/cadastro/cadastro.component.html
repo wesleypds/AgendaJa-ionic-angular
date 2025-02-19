@@ -10,43 +10,43 @@
       <ion-label position="floating">Primeiro nome</ion-label>
       <ion-input type="text" formControlName="firstName"></ion-input>
     </ion-item>
-    <p *ngIf="cadastroForm.get('firstName')?.invalid && cadastroForm.get('firstName')?.touched" class="error">
+    <ion-text color="danger" *ngIf="cadastroForm.get('firstName')?.invalid && cadastroForm.get('firstName')?.touched" class="error">
       O primeiro nome deve ter no máximo 10 caracteres.
-    </p>
+    </ion-text>
   
     <ion-item>
       <ion-label position="floating">Segundo nome</ion-label>
       <ion-input type="text" formControlName="lastName"></ion-input>
     </ion-item>
-    <p *ngIf="cadastroForm.get('lastName')?.invalid && cadastroForm.get('lastName')?.touched" class="error">
+    <ion-text color="danger" *ngIf="cadastroForm.get('lastName')?.invalid && cadastroForm.get('lastName')?.touched" class="error">
       O segundo nome deve ter no máximo 100 caracteres.
-    </p>
+    </ion-text>
   
     <ion-item>
       <ion-label position="floating">Nome de usuário</ion-label>
       <ion-input type="text" formControlName="user"></ion-input>
     </ion-item>
-    <p *ngIf="cadastroForm.get('user')?.invalid && cadastroForm.get('user')?.touched" class="error">
+    <ion-text color="danger" *ngIf="cadastroForm.get('user')?.invalid && cadastroForm.get('user')?.touched" class="error">
       O nome de usuário deve ter pelo menos 3 caracteres. <br>
       O nome de usuário deve ter no máximo 10 caracteres
-    </p>
+    </ion-text>
   
     <ion-item>
       <ion-label position="floating">E-mail</ion-label>
       <ion-input type="email" formControlName="email"></ion-input>
     </ion-item>
-    <p *ngIf="cadastroForm.get('email')?.invalid && cadastroForm.get('email')?.touched" class="error">
+    <ion-text color="danger" *ngIf="cadastroForm.get('email')?.invalid && cadastroForm.get('email')?.touched" class="error">
       Insira um e-mail válido.
-    </p>
+    </ion-text>
   
     <ion-item>
       <ion-label position="floating">Senha</ion-label>
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
-    <p *ngIf="cadastroForm.get('password')?.hasError('strongPassword')" class="error">
+    <ion-text color="danger" *ngIf="cadastroForm.get('password')?.hasError('strongPassword')" class="error">
       A senha deve ter pelo menos 9 caracteres. <br>
       A senha deve conter ao menos uma letra maiúscula, uma minúscula, um número e um caractere especial.
-    </p>
+    </ion-text>
   
     <ion-button expand="full" type="submit">
       Cadastrar

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-agendamentos',
   templateUrl: './agendamentos.component.html',
   styleUrls: ['./agendamentos.component.scss'],
+  standalone: false
 })
 export class AgendamentosComponent  implements OnInit {
 
