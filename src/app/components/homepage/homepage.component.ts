@@ -20,7 +20,6 @@ export class HomepageComponent  implements OnInit {
   ngOnInit() {}
 
   async notFound() {
-    console.log("Função chamada!");
     const alert = await this.alertController.create({
       header: 'Aviso',
       message: 'Funcionalidade a ser implementada!',
@@ -28,6 +27,10 @@ export class HomepageComponent  implements OnInit {
     });
     await alert.present();
     return;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }
