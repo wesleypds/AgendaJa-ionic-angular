@@ -1,10 +1,27 @@
 <form [formGroup]="cadastroForm" (ngSubmit)="register()">
   <ion-item>
-    <ion-label position="floating">Nome</ion-label>
-    <ion-input type="text" formControlName="name"></ion-input>
+    <ion-label position="floating">Primeiro nome</ion-label>
+    <ion-input type="text" formControlName="firstName"></ion-input>
   </ion-item>
-  <p *ngIf="cadastroForm.get('name')?.invalid && cadastroForm.get('name')?.touched" class="error">
-    O nome deve ter pelo menos 3 caracteres.
+  <p *ngIf="cadastroForm.get('firstName')?.invalid && cadastroForm.get('firstName')?.touched" class="error">
+    <span>O primeiro nome deve ter no máximo 10 caracteres.</span>
+  </p>
+
+  <ion-item>
+    <ion-label position="floating">Segundo nome</ion-label>
+    <ion-input type="text" formControlName="lastName"></ion-input>
+  </ion-item>
+  <p *ngIf="cadastroForm.get('lastName')?.invalid && cadastroForm.get('lastName')?.touched" class="error">
+    <span>O segundo nome deve ter no máximo 100 caracteres.</span>
+  </p>
+
+  <ion-item>
+    <ion-label position="floating">Nome de usuário</ion-label>
+    <ion-input type="text" formControlName="user"></ion-input>
+  </ion-item>
+  <p *ngIf="cadastroForm.get('user')?.invalid && cadastroForm.get('user')?.touched" class="error">
+    <span>O nome de usuário deve ter pelo menos 3 caracteres.</span>
+    <span>O nome de usuário deve ter no máximo 10 caracteres</span>
   </p>
 
   <ion-item>
@@ -20,7 +37,7 @@
     <ion-input type="password" formControlName="password"></ion-input>
   </ion-item>
   <p *ngIf="cadastroForm.get('password')?.invalid && cadastroForm.get('password')?.touched" class="error">
-    A senha deve ter pelo menos 6 caracteres.
+    <span>A senha deve ter pelo menos 9 caracteres.</span>
   </p>
 
   <ion-button expand="full" type="submit" [disabled]="cadastroForm.invalid">

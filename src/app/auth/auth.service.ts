@@ -9,14 +9,14 @@ export class AuthService {
 
   constructor() {}
 
-  async registerUser(name: string, email: string, password: string) {
+  async registerUser(firstName: string, lastName: string, user: string, email: string, password: string) {
     const users = await this.getUsers();
 
     if (users.find(user => user.email === email)) {
       throw new Error('E-mail já cadastrado!');
     }
 
-    users.push({ name, email, password });
+    users.push({ firstName, lastName, user, email, password });
 
     await Preferences.set({
       key: this.USER_KEY,
@@ -26,22 +26,22 @@ export class AuthService {
     return true;
   }
 
-  async loginUser(name: string, password: string) {
+  async loginUser(user: string, password: string) {
     const users = await this.getUsers();
     
-    const user = users.find(user => user.name === name && user.password === password);
+    const u = users.find(u => u.user === user && u.password === password);
 
-    if (!user) {
+    if (!u) {
       throw new Error('Usuário ou senha incorretos!');
     }
 
     // Simula que o usuário está logado, armazenando o e-mail
     await Preferences.set({
       key: 'loggedInUser',
-      value: JSON.stringify(user),
+      value: JSON.stringify(u),
     });
 
-    return user; // Retorna os dados do usuário autenticado
+    return u; // Retorna os dados do usuário autenticado
   }
 
   async getUsers(): Promise<any[]> {

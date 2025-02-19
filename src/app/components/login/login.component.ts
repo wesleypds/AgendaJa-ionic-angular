@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      user: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+      password: ['', [Validators.required, Validators.minLength(9)]],
     });
   }
 
@@ -31,10 +31,10 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const { name, password } = this.loginForm.value;
+    const { user, password } = this.loginForm.value;
 
     try {
-      await this.authService.loginUser(name, password);
+      await this.authService.loginUser(user, password);
       alert('Login com sucesso!');
       this.loginForm.reset(); // Limpa o formulário após o cadastro
       // 🔀 Redireciona para a tela de login
