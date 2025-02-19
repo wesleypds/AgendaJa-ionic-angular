@@ -1,4 +1,10 @@
-<ion-content>
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Header </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="light">
   <form [formGroup]="cadastroForm" (ngSubmit)="register()">
     <ion-item>
       <ion-label position="floating">Primeiro nome</ion-label>
@@ -46,4 +52,15 @@
       Cadastrar
     </ion-button>
   </form>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button color="primary">
+      <a style="text-decoration: none; color: inherit;" routerLink="/login">Voltar</a>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title> Footer </ion-title>
+  </ion-toolbar>
+</ion-footer>
