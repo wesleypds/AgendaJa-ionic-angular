@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class HomepageComponent  implements OnInit {
+  user$ = this.authService.getLoggedInUserObservable();
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private alertController: AlertController
+  ) { 
+  }
 
   ngOnInit() {}
+
+  async notFound() {
+    console.log("Função chamada!");
+    const alert = await this.alertController.create({
+      header: 'Aviso',
+      message: 'Funcionalidade a ser implementada!',
+      buttons: ['Ok'],
+    });
+    await alert.present();
+    return;
+  }
 
 }

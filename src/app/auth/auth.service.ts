@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private USER_KEY = 'users';
+  private loggedInUserSubject = new BehaviorSubject<any>(null);
 
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {
+    this.loadLoggedInUser();
+  }
 
   async registerUser(firstName: string, lastName: string, user: string, email: string, password: string) {
     const users = await this.getUsers();
@@ -45,6 +52,8 @@ export class AuthService {
       value: JSON.stringify(u),
     });
 
+    this.loggedInUserSubject.next(u); // Atualiza o estado global
+
     return u; // Retorna os dados do usuário autenticado
   }
 
@@ -60,5 +69,17 @@ export class AuthService {
 
   async logout() {
     await Preferences.remove({ key: 'loggedInUser' });
+    this.loggedInUserSubject.next(null); // Remove o usuário logado
+    this.router.navigate(['/login']);
+  }
+
+  async loadLoggedInUser() {
+    const { value } = await Preferences.get({ key: 'loggedInUser' });
+    const user = value ? JSON.parse(value) : null;
+    this.loggedInUserSubject.next(user);
+  }
+
+  getLoggedInUserObservable() {
+    return this.loggedInUserSubject.asObservable();
   }
 }

@@ -27,7 +27,7 @@
       <ion-input type="text" formControlName="user"></ion-input>
     </ion-item>
     <p *ngIf="cadastroForm.get('user')?.invalid && cadastroForm.get('user')?.touched" class="error">
-      O nome de usuário deve ter pelo menos 3 caracteres.
+      O nome de usuário deve ter pelo menos 3 caracteres. <br>
       O nome de usuário deve ter no máximo 10 caracteres
     </p>
   
@@ -53,14 +53,15 @@
     </ion-button>
   </form>
   <ion-fab slot="fixed" vertical="bottom" horizontal="start">
-    <ion-fab-button color="primary">
-      <a style="text-decoration: none; color: inherit;" routerLink="/login">Voltar</a>
+    <ion-fab-button>
+      <a style="text-decoration: none; color: inherit;" routerLink="/login">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </a>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-title> Footer </ion-title>
   </ion-toolbar>
 </ion-footer>
