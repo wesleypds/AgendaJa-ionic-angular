@@ -107,4 +107,8 @@ export class HomepageComponent  implements OnInit {
     this.router.navigate(['/agendamentos']);
   }
 
+  clear() {
+    this.agendamentoForm.reset();
+  }
+
 }

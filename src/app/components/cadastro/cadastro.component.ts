@@ -61,4 +61,8 @@ export class CadastroComponent {
       await alert.present();
     }
   }
+
+  clear() {
+    this.cadastroForm.reset();
+  }
 }

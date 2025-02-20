@@ -1,6 +1,6 @@
 <ion-menu contentId="main-content-menu">
   <ion-header>
-    <ion-toolbar color="tertiary">
+    <ion-toolbar color="primary" style="align-items: center;">
       <ion-label *ngIf="user$ | async as user">Olá, {{ user.firstName }} {{ user.lastName }}</ion-label>
     </ion-toolbar>
   </ion-header>
@@ -30,11 +30,11 @@
 </ion-menu>
 <div class="ion-page" id="main-content-menu">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>AgendaJá</ion-title>
+      <ion-title style="text-align: center;">AgendaJá</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -42,8 +42,8 @@
 
     <form [formGroup]="agendamentoForm" (ngSubmit)="create()">
       <ion-item>
-        <ion-label position="floating">Primeiro nome</ion-label>
-        <ion-input formControlName="primeiroNome"></ion-input>
+        <ion-input formControlName="primeiroNome" type="text" label="Primeiro nome"
+          label-placement="floating"></ion-input>
       </ion-item>
       <ion-text color="danger"
         *ngIf="agendamentoForm.controls['primeiroNome'].invalid && agendamentoForm.controls['primeiroNome'].touched">
@@ -51,8 +51,7 @@
       </ion-text>
 
       <ion-item>
-        <ion-label position="floating">Segundo nome</ion-label>
-        <ion-input formControlName="segundoNome"></ion-input>
+        <ion-input formControlName="segundoNome" type="text" label="Segundo nome" label-placement="floating"></ion-input>
       </ion-item>
       <ion-text color="danger"
         *ngIf="agendamentoForm.controls['segundoNome'].invalid && agendamentoForm.controls['segundoNome'].touched">
@@ -60,8 +59,7 @@
       </ion-text>
 
       <ion-item>
-        <ion-label position="floating">CPF</ion-label>
-        <ion-input formControlName="cpf" type="text"></ion-input>
+        <ion-input formControlName="cpf" type="text" label="CPF" label-placement="floating"></ion-input>
       </ion-item>
       <ion-text color="danger"
         *ngIf="agendamentoForm.controls['cpf'].invalid && agendamentoForm.controls['cpf'].touched">
@@ -74,8 +72,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Telefone</ion-label>
-        <ion-input formControlName="telefone" type="tel"></ion-input>
+        <ion-input formControlName="telefone" type="tel" label="Telefone" label-placement="floating"></ion-input>
       </ion-item>
       <ion-text color="danger"
         *ngIf="agendamentoForm.controls['telefone'].invalid && agendamentoForm.controls['telefone'].touched">
@@ -83,8 +80,7 @@
       </ion-text>
 
       <ion-item>
-        <ion-label position="floating">E-mail</ion-label>
-        <ion-input formControlName="email" type="email"></ion-input>
+        <ion-input formControlName="email" type="email" label="E-mail" label-placement="floating"></ion-input>
       </ion-item>
       <ion-text color="danger"
         *ngIf="agendamentoForm.controls['email'].invalid && agendamentoForm.controls['email'].touched">
@@ -92,8 +88,7 @@
       </ion-text>
 
       <ion-item>
-        <ion-label>Especialidade</ion-label>
-        <ion-select formControlName="especialidade">
+        <ion-select formControlName="especialidade" label="Escolha especialidade" label-placement="floating">
           <ion-select-option value="Cardiologia">Cardiologia</ion-select-option>
           <ion-select-option value="Dermatologia">Dermatologia</ion-select-option>
           <ion-select-option value="Ortopedia">Ortopedia</ion-select-option>
@@ -101,8 +96,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label>Escolha o Médico</ion-label>
-        <ion-select formControlName="medico">
+        <ion-select formControlName="medico" label="Escolha o médico" label-placement="floating">
           <ion-select-option value="Dr. João">Dr. João</ion-select-option>
           <ion-select-option value="Dra. Maria">Dra. Maria</ion-select-option>
           <ion-select-option value="Dr. Pedro">Dr. Pedro</ion-select-option>
@@ -115,13 +109,18 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Motivo da Consulta (opcional)</ion-label>
-        <ion-textarea formControlName="motivo"></ion-textarea>
+        <ion-textarea formControlName="motivo" label="Motivo da consulta (opcional)"
+          label-placement="floating"></ion-textarea>
       </ion-item>
 
-      <ion-button expand="full" type="submit">
-        <ion-icon name="add-outline"></ion-icon> Agendar
-      </ion-button>
+      <div class="botoes">
+        <ion-button type="submit">
+          Cadastrar
+        </ion-button>
+        <ion-button fill="clear" (click)="clear()">
+          Limpar
+        </ion-button>
+      </div>
     </form>
 
   </ion-content>

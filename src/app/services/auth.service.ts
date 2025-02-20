@@ -40,10 +40,14 @@ export class AuthService {
   async loginUser(user: string, password: string) {
     const users = await this.getUsers();
     
-    const u = users.find(u => u.user === user && u.password === password);
+    const u = await users.find(u => u.user === user);
 
     if (!u) {
-      throw new Error('Usuário ou senha incorretos!');
+      throw new Error('Usuário não existe!');
+    }
+
+    if (u.password !== password) {
+      throw new Error('Senha incorreta!');
     }
 
     // Simula que o usuário está logado, armazenando o e-mail

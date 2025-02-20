@@ -1,0 +1,15 @@
+.botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.botoes ion-button {
+    width: 100%;
+    /* Faz os botões preencherem toda a largura */
+    min-height: 50px;
+    /* Define um tamanho mínimo para manter a uniformidade */
+    font-size: 16px;
+    /* Ajusta o tamanho do texto */
+}
