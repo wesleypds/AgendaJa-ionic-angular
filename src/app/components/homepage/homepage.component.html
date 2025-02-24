@@ -43,12 +43,12 @@
     <form [formGroup]="agendamentoForm" (ngSubmit)="create()">
       <ion-item>
         <ion-input formControlName="primeiroNome" type="text" fill="solid" label="Primeiro nome"
-          label-placement="floating"></ion-input>
+          label-placement="floating" [counter]="true" [maxlength]="10"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-input formControlName="segundoNome" type="text" fill="solid" label="Segundo nome"
-          label-placement="floating"></ion-input>
+          label-placement="floating" [counter]="true" [maxlength]="100"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -68,7 +68,7 @@
 
       <ion-item>
         <ion-input formControlName="email" type="email" label="E-mail" placeholder="Ex.: email@email.com" fill="solid"
-          label-placement="floating"></ion-input>
+          label-placement="floating" errorText="E-mail Inválido" ngModel email></ion-input>
       </ion-item>
 
       <ion-item>
@@ -96,7 +96,7 @@
 
       <ion-item>
         <ion-textarea formControlName="motivo" label="Motivo da consulta (opcional)" fill="solid"
-          label-placement="floating"></ion-textarea>
+          label-placement="floating" [counter]="true" [maxlength]="500"></ion-textarea>
       </ion-item>
 
       <div class="botoes">

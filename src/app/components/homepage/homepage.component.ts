@@ -35,7 +35,7 @@ export class HomepageComponent  implements OnInit {
       especialidade: ['', Validators.required],
       medico: [''],
       dataConsulta: ['', Validators.required],
-      motivo: ['']
+      motivo: ['', Validators.maxLength(500)]
     });
   }
 

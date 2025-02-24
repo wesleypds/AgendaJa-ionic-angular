@@ -1,31 +1,33 @@
-<ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Bem-vindo ao AgendaJá!</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <ion-item>
-          <ion-label position="floating">Usuário</ion-label>
-          <ion-input type="text" formControlName="user"></ion-input>
-        </ion-item>
+<ion-content class="ion-padding" color="primary">
+  <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+    <ion-card class="centered-text-card">
+      <ion-card-header>
+        <ion-card-title>Bem-vindo ao AgendaJá!</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <ion-item>
+            <ion-label position="floating">Usuário</ion-label>
+            <ion-input type="text" formControlName="user"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Senha</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label position="floating">Senha</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
 
-        <ion-button expand="block" type="submit">
-          Entrar
-        </ion-button>
-        <ion-button expand="block" (click)="resetarDados()">
-          Resetar Dados
-        </ion-button>
-      </form>
-      <!-- 🔀 Link para a tela de cadastro -->
-      <div class="register-link">
-        <p>Não tem uma conta? <a routerLink="/cadastro">Cadastre-se</a></p>
-      </div>
-    </ion-card-content>
-  </ion-card>
+          <ion-button expand="block" type="submit">
+            Entrar
+          </ion-button>
+          <ion-button expand="block" (click)="resetarDados()">
+            Resetar Dados
+          </ion-button>
+        </form>
+        <!-- 🔀 Link para a tela de cadastro -->
+        <div class="register-link">
+          <p>Não tem uma conta? <a routerLink="/cadastro">Cadastre-se</a></p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

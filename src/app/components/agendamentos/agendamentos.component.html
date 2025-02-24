@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar color="primary" style="align-items: center;">
-    <ion-title> Agendamentos </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title style="text-align: center;"> Agendamentos </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,16 +8,16 @@
 
   <ion-list>
     <ion-item *ngFor="let agendamento of agendamentos">
-      <ion-label>
+      <ion-label class="centered-label">
         <h2>{{ agendamento.primeiroNome }} {{ agendamento.segundoNome }}</h2>
-        <p>CPF: {{ agendamento.cpf }}</p>
-        <p>Data de Nascimento: {{ agendamento.dataNascimento | date:'dd/MM/yyyy' }}</p>
-        <p>Telefone: {{ agendamento.telefone }}</p>
-        <p>Email: {{ agendamento.email }}</p>
-        <p>Especialidade: {{ agendamento.especialidade }}</p>
-        <p>Médico: {{ agendamento.medico }}</p>
-        <p>Data da Consulta: {{ agendamento.dataConsulta | date:'dd/MM/yyyy' }}</p>
-        <p>Motivo: {{ agendamento.motivo }}</p>
+        <p><strong>CPF:</strong> {{ agendamento.cpf }}</p>
+        <p><strong>Data de Nascimento:</strong> {{ agendamento.dataNascimento | date:'dd/MM/yyyy' }}</p>
+        <p><strong>Telefone:</strong> {{ agendamento.telefone }}</p>
+        <p><strong>Email:</strong> {{ agendamento.email }}</p>
+        <p><strong>Especialidade:</strong> {{ agendamento.especialidade }}</p>
+        <p><strong>Médico:</strong> {{ agendamento.medico }}</p>
+        <p><strong>Data da Consulta:</strong> {{ agendamento.dataConsulta | date:'dd/MM/yyyy' }}</p>
+        <p><strong>Motivo:</strong> {{ agendamento.motivo }}</p>
       </ion-label>
     </ion-item>
   </ion-list>
@@ -34,8 +34,3 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-  </ion-toolbar>
-</ion-footer>

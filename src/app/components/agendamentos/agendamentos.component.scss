@@ -1,0 +1,20 @@
+ion-header {
+    display: flex;
+    justify-content: center;
+    /* Centraliza a ion-label horizontalmente */
+}
+
+ion-item {
+    display: flex;
+    justify-content: center;
+    /* Centraliza a ion-label horizontalmente */
+}
+
+.centered-label {
+    display: inline-block;
+    /* Faz com que o label não ocupe toda a largura */
+    text-align: left;
+    /* Mantém o conteúdo interno alinhado à esquerda */
+    width: 100%;
+    /* Faz a ion-label ocupar toda a largura disponível dentro do item */
+}
