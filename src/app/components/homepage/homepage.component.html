@@ -35,7 +35,6 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title style="text-align: center;">AgendaJá</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -53,47 +52,23 @@
       </ion-item>
 
       <ion-item>
-        <ion-input formControlName="cpf" 
-                    type="text" 
-                    label="CPF" 
-                    placeholder="000.000.000-00"
-                    [maskito]="cpfMask"
-                    [maskitoElement]="maskPredicate"
-                    fill="solid" 
-                    label-placement="floating"
-                  ></ion-input>
+        <ion-input formControlName="cpf" type="text" label="CPF" placeholder="000.000.000-00" [maskito]="cpfMask"
+          [maskitoElement]="maskPredicate" fill="solid" label-placement="floating"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input
-          formControlName="dataNascimento"
-          type="date"
-          label="Data de Nascimento"
-          fill="solid"
-          label-placement="floating"
-        ></ion-input>
+        <ion-input formControlName="dataNascimento" type="date" label="Data de Nascimento" fill="solid"
+          label-placement="floating"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input formControlName="telefone" 
-                    type="tel" 
-                    label="Telefone" 
-                    placeholder="(00) 00000-0000"
-                    [maskito]="telMask"
-                    [maskitoElement]="maskPredicate"
-                    fill="solid"
-                    label-placement="floating"
-                  ></ion-input>
+        <ion-input formControlName="telefone" type="tel" label="Telefone" placeholder="(00) 00000-0000"
+          [maskito]="telMask" [maskitoElement]="maskPredicate" fill="solid" label-placement="floating"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input formControlName="email" 
-                    type="email" 
-                    label="E-mail" 
-                    placeholder="Ex.: email@email.com"
-                    fill="solid"
-                    label-placement="floating"
-                  ></ion-input>
+        <ion-input formControlName="email" type="email" label="E-mail" placeholder="Ex.: email@email.com" fill="solid"
+          label-placement="floating"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -115,13 +90,8 @@
 
 
       <ion-item>
-        <ion-input
-          formControlName="dataConsulta"
-          type="date"
-          label="Data de Consulta"
-          fill="solid"
-          label-placement="floating"
-        ></ion-input>
+        <ion-input formControlName="dataConsulta" type="date" label="Data de Consulta" fill="solid"
+          label-placement="floating"></ion-input>
       </ion-item>
 
       <ion-item>

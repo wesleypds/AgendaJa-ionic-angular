@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title> Header </ion-title>
+  <ion-toolbar color="primary" style="align-items: center;">
+    <ion-title> Agendamentos </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
         <p>Email: {{ agendamento.email }}</p>
         <p>Especialidade: {{ agendamento.especialidade }}</p>
         <p>Médico: {{ agendamento.medico }}</p>
-        <p>Data da Consulta: {{ agendamento.dataConsulta | date:'dd/MM/yyyy HH:mm' }}</p>
+        <p>Data da Consulta: {{ agendamento.dataConsulta | date:'dd/MM/yyyy' }}</p>
         <p>Motivo: {{ agendamento.motivo }}</p>
       </ion-label>
     </ion-item>

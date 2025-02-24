@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -25,9 +25,13 @@ const routes: Routes = [
   }
 ];
 
+const routerConfig: ExtraOptions = {
+  onSameUrlNavigation: 'reload', // Força o recarregamento da página
+};
+
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, routerConfig)
   ],
   exports: [RouterModule]
 })
