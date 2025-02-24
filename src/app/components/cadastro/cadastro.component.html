@@ -7,14 +7,14 @@
 <ion-content class="ion-padding" color="light">
   <form [formGroup]="cadastroForm" (ngSubmit)="register()">
     <ion-item>
-      <ion-input formControlName="primeiroNome" type="text" label="Primeiro nome" label-placement="floating"></ion-input>
+      <ion-input formControlName="firstName" type="text" label="Primeiro nome" label-placement="floating"></ion-input>
     </ion-item>
     <ion-text color="danger" *ngIf="cadastroForm.get('firstName')?.invalid && cadastroForm.get('firstName')?.touched" class="error">
       O primeiro nome deve ter no máximo 10 caracteres.
     </ion-text>
   
     <ion-item>
-      <ion-input formControlName="segundoNome" type="text" label="Segundo nome" label-placement="floating"></ion-input>
+      <ion-input formControlName="lastName" type="text" label="Segundo nome" label-placement="floating"></ion-input>
     </ion-item>
     <ion-text color="danger" *ngIf="cadastroForm.get('lastName')?.invalid && cadastroForm.get('lastName')?.touched" class="error">
       O segundo nome deve ter no máximo 100 caracteres.
