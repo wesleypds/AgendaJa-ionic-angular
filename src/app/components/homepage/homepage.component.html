@@ -69,16 +69,29 @@
       </ion-text>
 
       
-      <ion-accordion-group>
-        <ion-accordion value="first">
+      <!-- <ion-accordion-group>
+        <ion-accordion>
           <ion-item slot="header" color="light">
             <ion-label>Data de Nascimento</ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
-            <ion-datetime formControlName="dataNascimento" placeholder="Data de Nascimento"></ion-datetime>
+            <ion-datetime  placeholder="Data de Nascimento"></ion-datetime>
           </div>
         </ion-accordion>
-      </ion-accordion-group>
+      </ion-accordion-group> -->
+
+      <!-- <ion-item>
+        <ion-input
+          formControlName="dataNascimento"
+          type="date"
+          label="Data de Nascimento"
+          placeholder="00/00/0000"
+          [maskito]="cardMask"
+          [maskitoElement]="maskPredicate"
+          fill="solid"
+          label-placement="floating"
+        ></ion-input>
+      </ion-item> -->
 
       <ion-item>
         <ion-input formControlName="telefone" type="tel" label="Telefone" fill="solid"
@@ -116,16 +129,24 @@
       </ion-item>
 
 
-      <ion-accordion-group>
-        <ion-accordion value="second">
+      <!-- <ion-accordion-group>
+        <ion-accordion>
           <ion-item slot="header" color="light">
             <ion-label>Data de consulta</ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
-            <ion-datetime formControlName="dataConsulta" placeholder="Data da consulta"></ion-datetime>
+            <ion-datetime formControlName="dataNascimento" placeholder="Data da consulta"></ion-datetime>
           </div>
         </ion-accordion>
-      </ion-accordion-group>
+      </ion-accordion-group> -->
+
+      <ion-datetime-button datetime="dataConsulta"></ion-datetime-button>
+
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime id="dataConsulta" formControlName="dataConsulta"></ion-datetime>
+        </ng-template>
+      </ion-modal>
 
       <ion-item>
         <ion-textarea formControlName="motivo" label="Motivo da consulta (opcional)" fill="solid"

@@ -74,7 +74,7 @@ export class HomepageComponent  implements OnInit {
       await this.agendamentoService.create(primeiroNome,
                                             segundoNome,
                                             cpf,
-                                            dataConsulta,
+                                            dataNascimento,
                                             telefone,
                                             email,
                                             especialidade,
@@ -110,5 +110,21 @@ export class HomepageComponent  implements OnInit {
   clear() {
     this.agendamentoForm.reset();
   }
+
+  // readonly cardMask: MaskitoOptions = {
+  //   mask: [
+  //     ...Array(4).fill(/\d/),
+  //     ' ',
+  //     ...Array(4).fill(/\d/),
+  //     ' ',
+  //     ...Array(4).fill(/\d/),
+  //     ' ',
+  //     ...Array(4).fill(/\d/),
+  //     ' ',
+  //     ...Array(3).fill(/\d/),
+  //   ],
+  // };
+
+  // readonly maskPredicate: MaskitoElementPredicate = async (el) => (el as HTMLIonInputElement).getInputElement();
 
 }

@@ -42,7 +42,7 @@ export class AuthService {
     
     const u = await users.find(u => u.user === user);
 
-    console.log((u.user ? u.user : "null") + " - " + (u.password ? u.password : "null"))
+    // console.log((u.user ? u.user : "null") + " - " + (u.password ? u.password : "null"))
 
     if (!u) {
       throw new Error('Usuário não existe!');
