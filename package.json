@@ -10,8 +10,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "gera-app": "ionic build && ionic cap copy && ionic cap sync && ionic cap open android",
-    "gera-app-external": "ionic build && ionic cap copy && ionic cap sync && ionic cap run android -l --external"
+    "gera-app": "ionic build && ionic cap sync && ionic cap open android",
+    "gera-app-external": "ionic build && ionic cap sync && ionic cap run android -l --external"
   },
   "private": true,
   "dependencies": {
