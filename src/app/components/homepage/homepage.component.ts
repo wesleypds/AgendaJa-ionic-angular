@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { MaskitoOptions, MaskitoElementPredicate } from '@maskito/core';
 import { AgendamentoService } from 'src/app/services/agendamento.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -25,9 +26,9 @@ export class HomepageComponent  implements OnInit {
     this.agendamentoForm = this.fb.group({
       primeiroNome: ['', [Validators.required, Validators.maxLength(10)]],
       segundoNome: ['', [Validators.required, Validators.maxLength(100)]],
-      cpf: ['', [Validators.required, Validators.pattern(/^\d{11}$/)]],
+      cpf: ['', Validators.required],
       dataNascimento: ['', Validators.required],
-      telefone: ['', [Validators.required, Validators.pattern(/^\d{10,11}$/)]],
+      telefone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       especialidade: ['', Validators.required],
       medico: [''],
@@ -111,20 +112,31 @@ export class HomepageComponent  implements OnInit {
     this.agendamentoForm.reset();
   }
 
-  // readonly cardMask: MaskitoOptions = {
-  //   mask: [
-  //     ...Array(4).fill(/\d/),
-  //     ' ',
-  //     ...Array(4).fill(/\d/),
-  //     ' ',
-  //     ...Array(4).fill(/\d/),
-  //     ' ',
-  //     ...Array(4).fill(/\d/),
-  //     ' ',
-  //     ...Array(3).fill(/\d/),
-  //   ],
-  // };
+  readonly dateMask: MaskitoOptions = {
+    mask: [
+      /\d/, /\d/, '/',  // Dia (00/)
+      /\d/, /\d/, '/',  // Mês (00/)
+      /\d/, /\d/, /\d/, /\d/ // Ano (0000)
+    ]
+  };
 
-  // readonly maskPredicate: MaskitoElementPredicate = async (el) => (el as HTMLIonInputElement).getInputElement();
+  readonly cpfMask: MaskitoOptions = {
+    mask: [
+      /\d/, /\d/, /\d/, '.',  // Primeiros 3 dígitos + ponto
+      /\d/, /\d/, /\d/, '.',  // Mais 3 dígitos + ponto
+      /\d/, /\d/, /\d/, '-',  // Últimos 3 dígitos + hífen
+      /\d/, /\d/              // Dígitos finais
+    ]
+  };
+
+  readonly telMask: MaskitoOptions = {
+    mask: [
+      '(', /\d/, /\d/, ')', ' ',
+      /\d/, ' ', /\d/, /\d/, /\d/, /\d/, '-',
+      /\d/, /\d/, /\d/, /\d/  
+    ]
+  };
+
+  readonly maskPredicate: MaskitoElementPredicate = async (el) => (el as HTMLIonInputElement).getInputElement();
 
 }

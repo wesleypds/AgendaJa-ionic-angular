@@ -61,46 +61,38 @@
       </ion-text>
 
       <ion-item>
-        <ion-input formControlName="cpf" type="text" label="CPF" fill="solid" label-placement="floating"></ion-input>
+        <ion-input formControlName="cpf" 
+                    type="text" 
+                    label="CPF" 
+                    placeholder="000.000.000-00"
+                    [maskito]="cpfMask"
+                    [maskitoElement]="maskPredicate"
+                    fill="solid" 
+                    label-placement="floating"
+                  ></ion-input>
       </ion-item>
-      <ion-text color="danger"
-        *ngIf="agendamentoForm.controls['cpf'].invalid && agendamentoForm.controls['cpf'].touched">
-        CPF inválido (11 dígitos).
-      </ion-text>
 
-      
-      <!-- <ion-accordion-group>
-        <ion-accordion>
-          <ion-item slot="header" color="light">
-            <ion-label>Data de Nascimento</ion-label>
-          </ion-item>
-          <div class="ion-padding" slot="content">
-            <ion-datetime  placeholder="Data de Nascimento"></ion-datetime>
-          </div>
-        </ion-accordion>
-      </ion-accordion-group> -->
-
-      <!-- <ion-item>
+      <ion-item>
         <ion-input
           formControlName="dataNascimento"
           type="date"
           label="Data de Nascimento"
-          placeholder="00/00/0000"
-          [maskito]="cardMask"
-          [maskitoElement]="maskPredicate"
           fill="solid"
           label-placement="floating"
         ></ion-input>
-      </ion-item> -->
+      </ion-item>
 
       <ion-item>
-        <ion-input formControlName="telefone" type="tel" label="Telefone" fill="solid"
-          label-placement="floating"></ion-input>
+        <ion-input formControlName="telefone" 
+                    type="tel" 
+                    label="Telefone" 
+                    placeholder="(00) 0 0000-0000"
+                    [maskito]="telMask"
+                    [maskitoElement]="maskPredicate"
+                    fill="solid"
+                    label-placement="floating"
+                  ></ion-input>
       </ion-item>
-      <ion-text color="danger"
-        *ngIf="agendamentoForm.controls['telefone'].invalid && agendamentoForm.controls['telefone'].touched">
-        Telefone inválido (10-11 dígitos).
-      </ion-text>
 
       <ion-item>
         <ion-input formControlName="email" type="email" label="E-mail" fill="solid"
@@ -129,24 +121,15 @@
       </ion-item>
 
 
-      <!-- <ion-accordion-group>
-        <ion-accordion>
-          <ion-item slot="header" color="light">
-            <ion-label>Data de consulta</ion-label>
-          </ion-item>
-          <div class="ion-padding" slot="content">
-            <ion-datetime formControlName="dataNascimento" placeholder="Data da consulta"></ion-datetime>
-          </div>
-        </ion-accordion>
-      </ion-accordion-group> -->
-
-      <ion-datetime-button datetime="dataConsulta"></ion-datetime-button>
-
-      <ion-modal [keepContentsMounted]="true">
-        <ng-template>
-          <ion-datetime id="dataConsulta" formControlName="dataConsulta"></ion-datetime>
-        </ng-template>
-      </ion-modal>
+      <ion-item>
+        <ion-input
+          formControlName="dataConsulta"
+          type="date"
+          label="Data de Consulta"
+          fill="solid"
+          label-placement="floating"
+        ></ion-input>
+      </ion-item>
 
       <ion-item>
         <ion-textarea formControlName="motivo" label="Motivo da consulta (opcional)" fill="solid"

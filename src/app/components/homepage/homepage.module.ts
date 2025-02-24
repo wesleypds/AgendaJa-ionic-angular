@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomepageRoutingModule } from './homepage-routing.module';
 import { HomepageComponent } from './homepage.component';
+import { MaskitoDirective } from '@maskito/angular';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { HomepageComponent } from './homepage.component';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    HomepageRoutingModule
+    HomepageRoutingModule,
+    MaskitoDirective
   ],
   declarations: [HomepageComponent]
 })
