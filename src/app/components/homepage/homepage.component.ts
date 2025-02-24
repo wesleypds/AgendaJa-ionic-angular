@@ -5,6 +5,8 @@ import { AlertController } from '@ionic/angular';
 import { MaskitoOptions, MaskitoElementPredicate } from '@maskito/core';
 import { AgendamentoService } from 'src/app/services/agendamento.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { CpfValidator } from 'src/app/util/cpf.validator';
+import { PhoneValidator } from 'src/app/util/phone.validator';
 
 @Component({
   selector: 'app-homepage',
@@ -26,9 +28,9 @@ export class HomepageComponent  implements OnInit {
     this.agendamentoForm = this.fb.group({
       primeiroNome: ['', [Validators.required, Validators.maxLength(10)]],
       segundoNome: ['', [Validators.required, Validators.maxLength(100)]],
-      cpf: ['', Validators.required],
+      cpf: ['', [Validators.required, CpfValidator.validCpf]],
       dataNascimento: ['', Validators.required],
-      telefone: ['', Validators.required],
+      telefone: ['', [Validators.required, PhoneValidator.validPhone]],
       email: ['', [Validators.required, Validators.email]],
       especialidade: ['', Validators.required],
       medico: [''],
@@ -132,7 +134,7 @@ export class HomepageComponent  implements OnInit {
   readonly telMask: MaskitoOptions = {
     mask: [
       '(', /\d/, /\d/, ')', ' ',
-      /\d/, ' ', /\d/, /\d/, /\d/, /\d/, '-',
+      /\d/, /\d/, /\d/, /\d/, /\d/, '-',
       /\d/, /\d/, /\d/, /\d/  
     ]
   };

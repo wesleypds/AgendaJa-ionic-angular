@@ -46,19 +46,11 @@
         <ion-input formControlName="primeiroNome" type="text" fill="solid" label="Primeiro nome"
           label-placement="floating"></ion-input>
       </ion-item>
-      <ion-text color="danger"
-        *ngIf="agendamentoForm.controls['primeiroNome'].invalid && agendamentoForm.controls['primeiroNome'].touched">
-        O primeiro nome deve ter no máximo 10 caracteres.
-      </ion-text>
 
       <ion-item>
         <ion-input formControlName="segundoNome" type="text" fill="solid" label="Segundo nome"
           label-placement="floating"></ion-input>
       </ion-item>
-      <ion-text color="danger"
-        *ngIf="agendamentoForm.controls['segundoNome'].invalid && agendamentoForm.controls['segundoNome'].touched">
-        O segundo nome deve ter no máximo 100 caracteres.
-      </ion-text>
 
       <ion-item>
         <ion-input formControlName="cpf" 
@@ -86,7 +78,7 @@
         <ion-input formControlName="telefone" 
                     type="tel" 
                     label="Telefone" 
-                    placeholder="(00) 0 0000-0000"
+                    placeholder="(00) 00000-0000"
                     [maskito]="telMask"
                     [maskitoElement]="maskPredicate"
                     fill="solid"
@@ -95,13 +87,14 @@
       </ion-item>
 
       <ion-item>
-        <ion-input formControlName="email" type="email" label="E-mail" fill="solid"
-          label-placement="floating"></ion-input>
+        <ion-input formControlName="email" 
+                    type="email" 
+                    label="E-mail" 
+                    placeholder="Ex.: email@email.com"
+                    fill="solid"
+                    label-placement="floating"
+                  ></ion-input>
       </ion-item>
-      <ion-text color="danger"
-        *ngIf="agendamentoForm.controls['email'].invalid && agendamentoForm.controls['email'].touched">
-        Insira um e-mail válido.
-      </ion-text>
 
       <ion-item>
         <ion-select formControlName="especialidade" label="Escolha especialidade" fill="solid"
